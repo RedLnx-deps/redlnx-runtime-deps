@@ -1,0 +1,94 @@
+name: mirror-release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag from manifest.json, or "all"
+        default: all
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      tags: ${{ steps.tags.outputs.tags }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: tags
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          if [ "$INPUT_TAG" = all ]; then
+            tags=$(jq -c '[.releases[].tag]' manifest.json)
+          else
+            tags=$(jq -c --arg t "$INPUT_TAG" '[.releases[].tag | select(. == $t)]' manifest.json)
+          fi
+          [ "$tags" != '[]' ] || { echo "tag not in manifest.json: $INPUT_TAG"; exit 1; }
+          echo "tags=$tags" >> "$GITHUB_OUTPUT"
+
+  mirror:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: ${{ fromJson(needs.plan.outputs.tags) }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: ${{ matrix.tag }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload to a draft release
+        run: |
+          set -uo pipefail
+          if gh release view "$TAG" --json isDraft -q .isDraft 2>/dev/null | grep -q false; then
+            echo "$TAG is already published"
+            exit 0
+          fi
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --draft \
+            --title "$(jq -r --arg t "$TAG" '.releases[] | select(.tag == $t) | .title' manifest.json)" \
+            --notes-file "releases/$TAG.md"
+          failed=0
+          while IFS=$'\t' read -r name size sha source; do
+            rm -f -- "$name"
+            curl -fsSL --retry 3 -o "$name" "$source" || { echo "FAIL $name: download"; failed=1; continue; }
+            got_size=$(stat -c %s "$name")
+            got_sha=$(sha256sum "$name" | cut -d' ' -f1)
+            if [ "$got_size" != "$size" ] || [ "$got_sha" != "$sha" ]; then
+              echo "FAIL $name: size $got_size/$size sha256 $got_sha/$sha"
+              failed=1
+              rm -f -- "$name"
+              continue
+            fi
+            gh release upload "$TAG" "$name" --clobber || { echo "FAIL $name: upload"; failed=1; }
+            echo "ok   $name $size $sha"
+            rm -f -- "$name"
+          done < <(jq -r --arg t "$TAG" '.releases[] | select(.tag == $t) | .assets[] | [.name, .size, .sha256, .source] | @tsv' manifest.json)
+          [ "$failed" = 0 ] || { echo "$TAG stays a draft"; exit 1; }
+          gh release edit "$TAG" --draft=false
+
+      - name: Anonymous download check
+        run: |
+          set -uo pipefail
+          failed=0
+          while IFS=$'\t' read -r name size sha; do
+            url="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${name}"
+            rm -f -- "$name"
+            curl -fsSL --retry 3 -o "$name" "$url" || { echo "FAIL $name: anonymous download"; failed=1; continue; }
+            got_size=$(stat -c %s "$name")
+            got_sha=$(sha256sum "$name" | cut -d' ' -f1)
+            if [ "$got_size" = "$size" ] && [ "$got_sha" = "$sha" ]; then
+              echo "ok   $name"
+            else
+              echo "FAIL $name: size $got_size/$size sha256 $got_sha/$sha"
+              failed=1
+            fi
+            rm -f -- "$name"
+          done < <(jq -r --arg t "$TAG" '.releases[] | select(.tag == $t) | .assets[] | [.name, .size, .sha256] | @tsv' manifest.json)
+          exit $failed

@@ -1,0 +1,233 @@
+{
+  "source_repo": "dagnele89/redlnx-runtime-deps",
+  "releases": [
+    {
+      "tag": "v1",
+      "assets": [
+        {
+          "name": "NOTICE.txt",
+          "size": 1875,
+          "sha256": "3f83660be2de51cbad9194046303c53882aabb9264aca264b605211a9c4ba759",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1/NOTICE.txt"
+        },
+        {
+          "name": "NVIDIA-CUDA-LICENSE.txt",
+          "size": 63021,
+          "sha256": "e2c71babfd18a8e69542dd7e9ca018f9caa438094001a58e6bc4d8c999bf0d07",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1/NVIDIA-CUDA-LICENSE.txt"
+        },
+        {
+          "name": "NVIDIA-CUDNN-LICENSE.txt",
+          "size": 29662,
+          "sha256": "4fce5a3b1ecaf4d7d202478e969e4563c7220db2718a76067e286c0202e1195f",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1/NVIDIA-CUDNN-LICENSE.txt"
+        },
+        {
+          "name": "cuda12-win-x64.zip",
+          "size": 1447367796,
+          "sha256": "7a41946d05e76ab0bb6cb4e0aab02246140e51090f33094766a4a88fac293cdd",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1/cuda12-win-x64.zip"
+        },
+        {
+          "name": "cudnn9-cuda12-win-x64.zip",
+          "size": 1053764251,
+          "sha256": "f09d8749bbbde091f9a28122946f763bc52d600f1902af19b609f9212b146bc3",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1/cudnn9-cuda12-win-x64.zip"
+        }
+      ],
+      "title": "Windows x64 CUDA 12 and cuDNN 9"
+    },
+    {
+      "tag": "v1-camera-looks-f",
+      "assets": [
+        {
+          "name": "redlnx-camera-looks-f-v1.zip",
+          "size": 3014318,
+          "sha256": "7b5266f1e15e9b7bf8f40919a5d00b56892c6158f291486bac6410d44ef6830e",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-camera-looks-f/redlnx-camera-looks-f-v1.zip"
+        }
+      ],
+      "title": "Camera Looks F v1"
+    },
+    {
+      "tag": "v1-linux-cuda",
+      "assets": [
+        {
+          "name": "NOTICE.txt",
+          "size": 3866,
+          "sha256": "139e72485420c5ee0d8d395fc5dbdb377d33cd0855ebd69acd28954374a03f09",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-linux-cuda/NOTICE.txt"
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 318,
+          "sha256": "f39cd8dddb3c3261830d717598fe694b1b7fd66b5dff42afb59fe66b8a49e06e",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-linux-cuda/SHA256SUMS.txt"
+        },
+        {
+          "name": "redlnx-cuda12-linux-x64.tar.zst",
+          "size": 795533519,
+          "sha256": "d629453a34af33ec9931c7a9dfb5a737e6102599ae5f34fa2960a8dc80561b1a",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-linux-cuda/redlnx-cuda12-linux-x64.tar.zst"
+        },
+        {
+          "name": "redlnx-cudnn9-cuda12-linux-x64.tar.zst",
+          "size": 612255036,
+          "sha256": "a2dc7744296f78ed77eff926394ec610955f9c1862542deb5e69b158f7a49b56",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-linux-cuda/redlnx-cudnn9-cuda12-linux-x64.tar.zst"
+        },
+        {
+          "name": "redlnx-onnxruntime-linux-x64-cuda-1.24.2.tar.zst",
+          "size": 162783277,
+          "sha256": "48acc405134f49673c29374de1ad3a63d0018f03033dd72ef97e3d09bae8177a",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-linux-cuda/redlnx-onnxruntime-linux-x64-cuda-1.24.2.tar.zst"
+        }
+      ],
+      "title": "Linux x64 ONNX Runtime 1.24.2 CUDA"
+    },
+    {
+      "tag": "v1-linux-runtime",
+      "assets": [
+        {
+          "name": "redlnx-onnxruntime-linux-x64-webgpu-1.24.2.tar.zst",
+          "size": 13119481,
+          "sha256": "c207c581c41e54a6bfc6632b184580cdc7b6788aaf46d927fa1fef2f00f6db2c",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-linux-runtime/redlnx-onnxruntime-linux-x64-webgpu-1.24.2.tar.zst"
+        },
+        {
+          "name": "redlnx-onnxruntime-linux-x64-webgpu-1.24.2.tar.zst.sha256",
+          "size": 174,
+          "sha256": "18b7fc26ef925185bdc2aebccac0dc0eeb0e7315295bd49e8bc6652dcf7a40a6",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-linux-runtime/redlnx-onnxruntime-linux-x64-webgpu-1.24.2.tar.zst.sha256"
+        }
+      ],
+      "title": "Linux x64 ONNX Runtime 1.24.2 WebGPU"
+    },
+    {
+      "tag": "v1-models",
+      "assets": [
+        {
+          "name": "birefnet-general-fp16.onnx",
+          "size": 489666272,
+          "sha256": "3654c741eb80bd926ada8fed1713b506ccf8d30eb1f6487e87eb9f234f33df09",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/birefnet-general-fp16.onnx"
+        },
+        {
+          "name": "birefnet-matting-fp32.onnx",
+          "size": 940840787,
+          "sha256": "f0843e38f6a4e88efc8c5fad4178ad7ed6c818346ce12f82e7b579324fe7e0c5",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/birefnet-matting-fp32.onnx"
+        },
+        {
+          "name": "birefnet-portrait-fp16.onnx",
+          "size": 489666272,
+          "sha256": "4c05930c0b6f1418d02eb1de81c46fe37638ba54f5a93adeb5c674521db10110",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/birefnet-portrait-fp16.onnx"
+        },
+        {
+          "name": "birefnet_lite_fp16.onnx",
+          "size": 114538787,
+          "sha256": "311cfd8088ee71224ba0687b00dfad1ed28fc05aae0ce64e87965cc3d4b29d6a",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/birefnet_lite_fp16.onnx"
+        },
+        {
+          "name": "depth-anything-v2-small-fp16.onnx",
+          "size": 50563960,
+          "sha256": "10d35ac4e5e705a6d2bcbcb7685e11846fc02e2658cc61ac3a7c6984bb807e11",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/depth-anything-v2-small-fp16.onnx"
+        },
+        {
+          "name": "efficient-sam-ti-2025apr.onnx",
+          "size": 48312857,
+          "sha256": "4eb496e0a7259d435b49b66faf1754aa45a5c382a34558ddda9a8c6fe5915d77",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/efficient-sam-ti-2025apr.onnx"
+        },
+        {
+          "name": "geocalib-perspective-field-pinhole.onnx",
+          "size": 116477360,
+          "sha256": "1d59fa256989dabb33e03fdcd85813d2c860c4fab7c127e470f924647b06d13c",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/geocalib-perspective-field-pinhole.onnx"
+        },
+        {
+          "name": "modnet-fp32.onnx",
+          "size": 25961503,
+          "sha256": "1e7ce054eb030ba3e297f8878d5e7be0b3c1b89b20ea80f35646bae2ec8865b6",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/modnet-fp32.onnx"
+        },
+        {
+          "name": "parsing_resnet18_gpu.onnx",
+          "size": 53204968,
+          "sha256": "80498345d01c4ff371aa98f292937736749e7222ce8da05a7b6d8ebcf8f50101",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/parsing_resnet18_gpu.onnx"
+        },
+        {
+          "name": "rvm_mobilenetv3_fp32.onnx",
+          "size": 14975696,
+          "sha256": "88d4531297118f595bf2fd60f6f566aec2e559393802d1f436c380f0cbbd2828",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/rvm_mobilenetv3_fp32.onnx"
+        },
+        {
+          "name": "sam21-base-plus-decoder.onnx",
+          "size": 20603850,
+          "sha256": "ba53b70276327e9ee63cfaf6c94a5944d8658cdfb0cf015c059ca3da6d6591f2",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/sam21-base-plus-decoder.onnx"
+        },
+        {
+          "name": "sam21-base-plus-encoder.onnx",
+          "size": 339750624,
+          "sha256": "cd533697c042c3f8226bffff57df93fe093d5d53131fbb05d8fa7875b61f7112",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/sam21-base-plus-encoder.onnx"
+        },
+        {
+          "name": "upernet_convnext_large_landscape_768_fp16.onnx",
+          "size": 466648763,
+          "sha256": "f748b3207da82a4172d08da2df0309c662a5554de5a5cf0a2ccf73b1b12e8365",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/upernet_convnext_large_landscape_768_fp16.onnx"
+        },
+        {
+          "name": "upernet_convnext_large_landscape_768_v2_fp16.onnx",
+          "size": 466648771,
+          "sha256": "03768bd516f8bc88a84ab2b2aa20f226fee455efd749a23a9bd5ec8c4649c2f3",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/upernet_convnext_large_landscape_768_v2_fp16.onnx"
+        },
+        {
+          "name": "upernet_convnext_large_sky_768_fp16.onnx",
+          "size": 466646245,
+          "sha256": "a10cfb29f38eed194634c69ca109aa948e467e55f74d51dafa42e4ab55f7df98",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-models/upernet_convnext_large_sky_768_fp16.onnx"
+        }
+      ],
+      "title": "Model weights"
+    },
+    {
+      "tag": "v1-windows-runtime",
+      "assets": [
+        {
+          "name": "onnxruntime-win-x64-gpu-1.24.2.zip",
+          "size": 280855316,
+          "sha256": "4152b67ea67405cf642fdc484a4e24fb1d9bfda7a78dfd5f756c73812a40bdcd",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-windows-runtime/onnxruntime-win-x64-gpu-1.24.2.zip"
+        },
+        {
+          "name": "redlnx-onnxruntime-windows-x64-directml-1.24.2.zip",
+          "size": 15545263,
+          "sha256": "6bfc42df0ab4621ca697dbe5fab6c8401eaec1820bec59272737c49f27e410be",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-windows-runtime/redlnx-onnxruntime-windows-x64-directml-1.24.2.zip"
+        },
+        {
+          "name": "redlnx-onnxruntime-windows-x64-webgpu-1.24.2.zip",
+          "size": 16776530,
+          "sha256": "763806364969ca2567968b7d8d58a7a83da0697ff868d854d1864447449b2f2a",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-windows-runtime/redlnx-onnxruntime-windows-x64-webgpu-1.24.2.zip"
+        },
+        {
+          "name": "redlnx-onnxruntime-windows-x64-webgpu-1.24.2.zip.sha256",
+          "size": 116,
+          "sha256": "5ff5e0a142b6686ca7096885918f0a6dda3264844bb25aab73a131eba4350be2",
+          "source": "https://github.com/dagnele89/redlnx-runtime-deps/releases/download/v1-windows-runtime/redlnx-onnxruntime-windows-x64-webgpu-1.24.2.zip.sha256"
+        }
+      ],
+      "title": "Windows x64 ONNX Runtime 1.24.2"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+RedLnx runtime dependencies: notices
+
+The files in these releases are separate third-party artifacts. They are not covered by the AGPL-3.0 license of the RedLnx source code. This file is an extract of the RedLnx NOTICE for the files hosted here.
+
+Third-party model assets
+
+- File: runtime model `geocalib-perspective-field-pinhole.onnx`
+- Purpose: optional local perspective-field inference for Develop Auto Upright when line detection has insufficient evidence
+- SHA256: `1d59fa256989dabb33e03fdcd85813d2c860c4fab7c127e470f924647b06d13c`
+- Source: cvg/GeoCalib, https://github.com/cvg/GeoCalib, upstream revision `97b8968e7798a66bf04fcf791fb535624241bda7`
+- Paper: Luca Veicht, Paul-Edouard Sarlin, Philipp Lindenberger, Viktor Larsson, Marc Pollefeys, and Torsten Sattler, "GeoCalib: Single-image Calibration with Geometric Optimization", ECCV 2024, https://arxiv.org/abs/2409.06704
+- Upstream code license: Apache License 2.0.
+- Pretrained `pinhole` weights license: Creative Commons Attribution 4.0 International (CC BY 4.0). Attribution to the GeoCalib authors and paper is preserved here.
+- RedLnx exports only the deterministic perspective-field network (up-vector, latitude, and confidences) to ONNX; the upstream Levenberg-Marquardt optimization loop is not included. The asset is distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+- File: runtime model `depth-anything-v2-small-fp16.onnx`
+- Purpose: optional local relative-depth inference for depth-range masks
+- SHA256: `10d35ac4e5e705a6d2bcbcb7685e11846fc02e2658cc61ac3a7c6984bb807e11`
+- Source: DepthAnything/Depth-Anything-V2 and the `onnx-community/depth-anything-v2-small-ONNX` FP16 export at revision `c3b67641fd837b2368757101311e5d21e511441e`
+- Paper: Lihe Yang et al., "Depth Anything V2", NeurIPS 2024, https://arxiv.org/abs/2406.09414
+- License: Apache License 2.0. Only the Small checkpoint is redistributed: the upstream Base, Large, and Giant checkpoints are CC-BY-NC-4.0 and are deliberately excluded from RedLnx distribution.
+- The ONNX external tensor data is consolidated into the single pinned file above. The asset is distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+- Files: runtime models `zim-vitb-encoder-fp16.onnx`, `zim-vitb-decoder.onnx`
+- Purpose: optional local point/box-prompt matting for click-select masks, preferred over SAM 2.1 when installed
+- SHA256: encoder `fbbf445f670be159f19238a8bdd7145f3658887a493dc6c00489a7ffd597b825`, decoder `a99d14bac3dc28b17809020b1711b1991bd5b7eb18f678c3624ce508748cfa11`
+- Source: NAVER Cloud ZIM-Anything ViT-B, `naver-iv/zim-anything-vitb` (`zim_vit_b_2043/encoder.onnx`, `decoder.onnx`); RedLnx rewrote the encoder's relative-position Einsum nodes as equivalent MatMul nodes and converted it to FP16 with FP32 inputs and outputs (`onnxruntime.transformers.float16`), the decoder unchanged, files renamed
+- Paper: Beomyoung Kim et al., "ZIM: Zero-Shot Image Matting for Anything", ICCV 2025, https://arxiv.org/abs/2411.00626
+- License: Creative Commons Attribution 4.0 International (CC BY 4.0) for the weights; the modified encoder is a derivative of them. The ZIM repository code (CC BY-NC 4.0) is not used.
+- The assets are not committed to this monorepo.
+
+- Files: runtime models `sam21-base-plus-encoder.onnx`, `sam21-base-plus-decoder.onnx`
+- Purpose: optional local point/box-prompt segmentation for click-select masks
+- SHA256: encoder `cd533697c042c3f8226bffff57df93fe093d5d53131fbb05d8fa7875b61f7112`, decoder `ba53b70276327e9ee63cfaf6c94a5944d8658cdfb0cf015c059ca3da6d6591f2`
+- Source: facebookresearch/sam2 (SAM 2.1 Hiera Base Plus), ONNX export `mask-object-sam21-base-plus` from darktable-org/darktable-ai release `release-5.6.0`, files renamed
+- Paper: Nikhila Ravi et al., "SAM 2: Segment Anything in Images and Videos", https://arxiv.org/abs/2408.00714
+- License: Apache License 2.0 (code and checkpoints, per the SAM 2 README). Training data: SA-V (CC BY 4.0) and SA-1B (Meta research license), as stated by the darktable-ai model card.
+- The assets are distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+- File: runtime model `efficient-sam-ti-2025apr.onnx`
+- Purpose: optional local point-prompt segmentation for click-select masks
+- SHA256: `4eb496e0a7259d435b49b66faf1754aa45a5c382a34558ddda9a8c6fe5915d77`
+- Source: yformer/EfficientSAM and the OpenCV model asset `opencv/image_segmentation_efficientsam` at revision `1e791988b34b2098736003057da0f3e6bc826259`
+- Paper: Yunyang Xiong et al., "EfficientSAM: Leveraged Masked Image Pretraining for Efficient Segment Anything", https://arxiv.org/abs/2312.00863
+- License: Apache License 2.0. The OpenCV model repository states that all files in the model directory, including this April 2025 EfficientSAM-Ti ONNX asset, are Apache-2.0.
+- The asset is distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+- File: runtime model `birefnet-general-fp16.onnx`
+- Purpose: optional high-quality local subject/background segmentation; preferred over BiRefNet Lite on hardware that can load it
+- SHA256: `3654c741eb80bd926ada8fed1713b506ccf8d30eb1f6487e87eb9f234f33df09`
+- Source: ZhengPeng7/BiRefNet and the `onnx-community/BiRefNet-ONNX` FP16 export at revision `534d3c82d3bb8b2f0867db6dfbc3a525b8e42f67`
+- Paper: Zheng Peng et al., "Bilateral Reference for High-Resolution Dichotomous Image Segmentation", https://arxiv.org/abs/2401.03407
+- License: MIT License.
+- The General model is the preferred subject-mask asset; `birefnet_lite_fp16.onnx` remains the low-resource fallback. Both are distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+- File: runtime model `rvm_mobilenetv3_fp32.onnx`
+- Purpose: light-tier human alpha matting for the subject mask producer on machines whose BiRefNet matting graph resolves on CPU
+- SHA256: `88d4531297118f595bf2fd60f6f566aec2e559393802d1f436c380f0cbbd2828`
+- Source: the unmodified official release asset of PeterL1n/RobustVideoMatting, release `v1.0.0` (`rvm_mobilenetv3_fp32.onnx`, MD5 `dae652b8c8269948cb4229cda0cb999e`)
+- Paper: Shanchuan Lin et al., "Robust High-Resolution Video Matting with Temporal Guidance", WACV 2022, https://arxiv.org/abs/2108.11515
+- License: GNU General Public License v3.0 (the upstream repository license, covering code and released model weights). GPL-3.0 is compatible with this project's AGPL-3.0. The asset is distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+- File: runtime model `modnet-fp32.onnx`
+- Purpose: light-tier portrait alpha matting, user-selectable alternative to RVM in the subject mask producer
+- SHA256: `1e7ce054eb030ba3e297f8878d5e7be0b3c1b89b20ea80f35646bae2ec8865b6`
+- Source: exported by RedLnx (`misc/modnet_export/export_modnet.py`) from the OFFICIAL checkpoint `modnet_photographic_portrait_matting.ckpt` (MD5 `63396b0e3fdf0a7ef11dfc850cde2773`) of ZHKKKe/MODNet — no third-party re-publication is redistributed
+- Paper: Zhanghan Ke et al., "MODNet: Real-Time Trimap-Free Portrait Matting via Objective Decomposition", AAAI 2022, https://arxiv.org/abs/2011.11961
+- License: Apache License 2.0. The upstream README states the code, models, and demos (excluding `doc/gif`) are released under Apache-2.0. The asset is distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+- Files: `upernet_convnext_large_sky_768_fp16.onnx`, `upernet_convnext_large_landscape_768_fp16.onnx`
+- Purpose: sky and landscape-region masks (sky, mountains, water, vegetation, natural and artificial ground, architecture)
+- SHA256: sky `a10cfb29f38eed194634c69ca109aa948e467e55f74d51dafa42e4ab55f7df98`, landscape `f748b3207da82a4172d08da2df0309c662a5554de5a5cf0a2ccf73b1b12e8365`
+- Source: the Hugging Face transformers port `openmmlab/upernet-convnext-large` (UperNet with a ConvNeXt-Large backbone, ADE20K, 150 classes), exported by RedLnx to return the softmax sky plane with FP16 weights (`onnxconverter_common.float16`, `keep_io_types=True`). The landscape file adds the per-category sums of the same softmax (`models/upernet_landscape.py`).
+- License: MIT. Both assets are distributed separately through `RedLnx-deps/redlnx-runtime-deps` release `v1-models`, never committed to this monorepo.
+
+
+Camera Looks runtime pack
+
+- Camera Looks F v1 runtime pack: F-AS, F-CC, F-MO, F-PR and F-VE derive from Jo's Fuji film emulation presets in darktable src/iop/colorchecker.c; F-AC derives from Acros 100 spectral weights in src/iop/channelmixerrgb.c. Copyright darktable developers and the respective preset contributors; GPL-3.0-or-later. The pack preserves luminance and excludes the source tone curve. Source: https://github.com/darktable-org/darktable and https://jo.dreggn.org/blog/darktable-fuji-styles.tar.xz. Reproduction is in redlnx-runtime-deps/bin/bake-camera-looks.py. Pinned source SHA256: colorchecker.c fde70924e5774b587b8398b2ffd501daad83e5a5b8925ae69fc8edf06e0d63e5; channelmixerrgb.c 2eda8d4b1906fe3565e96d22c89980a93095e4aeca314fcde71869d392e1a5f8. Pack archive SHA256: 7b5266f1e15e9b7bf8f40919a5d00b56892c6158f291486bac6410d44ef6830e. Fujifilm names describe inspiration; no affiliation or numerical-equivalence claim. Filtered Acros/Monochrome and the other simulations use separate mathematical presets or user-supplied DCPs, not these six LUTs.
+
+NVIDIA CUDA / cuDNN runtime (Windows only)
+
+- RedLnx may download pre-built NVIDIA CUDA and cuDNN runtime libraries to enable GPU-accelerated inference on Windows.
+- These binaries are proprietary NVIDIA software, NOT covered by AGPL-3.0, and are redistributed under the NVIDIA Software License Agreement.
+- See `NVIDIA-CUDA-LICENSE.txt` and `NVIDIA-CUDNN-LICENSE.txt` shipped alongside the runtime files for terms.
+- NVIDIA, CUDA, and cuDNN are trademarks or registered trademarks of NVIDIA Corporation.
+
+Linux ONNX Runtime WebGPU/Vulkan runtime
+
+- RedLnx may download a pre-built Linux x64 ONNX Runtime runtime bundle from the `redlnx-runtime-deps` release repository to enable local GPU-accelerated inference through the ONNX Runtime WebGPU execution provider with the Dawn Vulkan backend.
+- Current package: `redlnx-onnxruntime-linux-x64-webgpu-1.24.2.tar.zst`
+- SHA256: `c207c581c41e54a6bfc6632b184580cdc7b6788aaf46d927fa1fef2f00f6db2c`
+- The bundle includes ONNX Runtime `libonnxruntime.so`, `libonnxruntime_providers_shared.so`, and `libonnxruntime_providers_webgpu.so` built from ONNX Runtime 1.24.2.
+- ONNX Runtime is licensed under the MIT License. The release archive includes ONNX Runtime `LICENSE` and `ThirdPartyNotices.txt` files with notices for bundled third-party components, including Dawn/WebGPU-related dependencies.
+- These runtime libraries are separate third-party binary artifacts and are not covered by the RedLnx AGPL-3.0 source-code license.
+
+Optional face-parts parser
+
+- Explicit Settings download, not bundled: `parsing_resnet18_gpu.onnx`, 53,204,968 bytes, SHA-256 `80498345d01c4ff371aa98f292937736749e7222ce8da05a7b6d8ebcf8f50101`, published in `RedLnx-deps/redlnx-runtime-deps` release `v1-models`. It is the BiSeNet ResNet-18 face parser below with its four whole-map AveragePool nodes written as GlobalAveragePool (`models/face_parser_gpu.py`; identical outputs on CPU); weights unchanged.
+- Source file: `parsing_resnet18.onnx`, 53,205,364 bytes, SHA-256 `0d9bd318e46987c3bdbfacae9e2c0f461cae1c6ac6ea6d43bbe541a91727e33f`.
+- Upstream code: https://github.com/yakhyo/face-parsing — MIT, copyright (c) 2024 Yakhyokhuja Valikhujaev. License: https://github.com/yakhyo/face-parsing/blob/8a4729d95118d0e97c44185f9bdef3d6bfeaaf99/LICENSE . No upstream code is copied into the adapter.
+- Pinned model mirror: https://huggingface.co/yakhyo/uniface-weights/blob/13f64660d271d74aa7cc2e86c43d39da551848a5/parsing_resnet18.onnx . The UniFace registry identifies the original release `https://github.com/yakhyo/face-parsing/releases/download/weights/resnet18.onnx` with the same hash.
+
+Trademark notice
+
+RedLnx is an independent open-source project. It is not affiliated with, endorsed by, or sponsored by NVIDIA Corporation, Microsoft Corporation, or any other third party.
