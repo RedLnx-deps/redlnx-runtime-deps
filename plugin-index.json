@@ -1,0 +1,52 @@
+{
+  "plugins": [
+    {
+      "id": "realesrgan-ncnn",
+      "name": "Real-ESRGAN x4plus",
+      "version": "20220424",
+      "license": "MIT AND BSD-3-Clause",
+      "source_url": "https://github.com/xinntao/Real-ESRGAN",
+      "image_format": "png8",
+      "packages": {
+        "windows": {
+          "url": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-windows.zip",
+          "sha256": "abc02804e17982a3be33675e4d471e91ea374e65b70167abc09e31acb412802d",
+          "executable": "realesrgan-ncnn-vulkan.exe",
+          "architectures": [
+            "x86_64"
+          ]
+        },
+        "linux": {
+          "url": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip",
+          "sha256": "e5aa6eb131234b87c0c51f82b89390f5e3e642b7b70f2b9bbe95b6a285a40c96",
+          "executable": "realesrgan-ncnn-vulkan",
+          "architectures": [
+            "x86_64"
+          ]
+        },
+        "macos": {
+          "url": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-macos.zip",
+          "sha256": "e0ad05580abfeb25f8d8fb55aaf7bedf552c375b5b4d9bd3c8d59764d2cc333a",
+          "executable": "realesrgan-ncnn-vulkan",
+          "architectures": [
+            "x86_64",
+            "aarch64"
+          ]
+        }
+      },
+      "licenses": [
+        {
+          "file": "LICENSE-ncnn",
+          "url": "https://raw.githubusercontent.com/xinntao/Real-ESRGAN-ncnn-vulkan/master/LICENSE",
+          "sha256": "5abb941454de437b0e90d78dcb72e3688f74e14bcd4e24393273cb5cd0e9c937"
+        },
+        {
+          "file": "LICENSE-model",
+          "url": "https://raw.githubusercontent.com/xinntao/Real-ESRGAN/v0.2.5.0/LICENSE",
+          "sha256": "4a699ec4863d96a91fc265948a0c90033f7e8735d515524dcf3444736406e0c2"
+        }
+      ]
+    }
+  ],
+  "community": []
+}
